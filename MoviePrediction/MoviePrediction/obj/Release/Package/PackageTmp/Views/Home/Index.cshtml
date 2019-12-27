@@ -1,0 +1,138 @@
+﻿<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-video-camera" style="font-size:36px;"></i></span>
+                        &nbsp;&nbsp;
+                        <h3>Movie Prediction.</h3>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="uniqueID" autocomplete="off" hidden />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-imdb"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="txtMovieIMDBId" placeholder="IMDB Id" autocomplete="off" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-film"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="txtMovieTitle" placeholder="Movie Title" autocomplete="off" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                            <input type="text" id="yrReleaseYear" placeholder="Release Year" class="form-control" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar-check-o"></i></span>
+                            </div>
+                            <input type="text" id="dtpReleaseDate" placeholder="Release Date" class="form-control" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-ticket"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="txtGenre" placeholder="Genre" autocomplete="off" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user-circle-o"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="txtWriters" placeholder="Writers" autocomplete="off" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-users"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="txtActors" placeholder="Actors" autocomplete="off" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user-secret"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="txtDirectors" placeholder="Directors" autocomplete="off" />
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-repeat"></i></span>
+                            </div>
+                            <input type="number" class="form-control" id="txtSequel" placeholder="Sequel" autocomplete="off" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="Predict();" class="btn btn-primary float-right">Predict</button>
+                    <button type="button" onclick="ClearControls();" class="btn btn-warning">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div id="divStarRatingPanel" style="margin-top:75px;">
+        </div>
+    </div>
+</div>
+    <script src="~/ViewModels/Index/Index.js"></script>
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('input[id*=dtp]').datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            $('input[id*=yr]').yearpicker({
+
+                // Auto Hide
+                autoHide: true,
+
+                // Initial Year
+                year: null,
+
+                // Start Year
+                startYear: null,
+
+                // End Year
+                endYear: null,
+
+                // Element tag
+                itemTag: 'li',
+
+                // Default CSS classes
+                selectedClass: 'selected',
+                disabledClass: 'disabled',
+                hideClass: 'hide',
+                highlightedClass: 'highlighted',
+
+                // Custom template
+                template: `<div class="yearpicker-container">
+              <div class="yearpicker-header">
+                  <div class="yearpicker-prev" data-view="yearpicker-prev">&lsaquo;</div>
+                  <div class="yearpicker-current" data-view="yearpicker-current">SelectedYear</div>
+                  <div class="yearpicker-next" data-view="yearpicker-next">&rsaquo;</div>
+              </div>
+              <div class="yearpicker-body">
+                  <ul class="yearpicker-year" data-view="years">
+                  </ul>
+              </div>
+          </div>
+  `,
+
+            });
+        });
+
+    </script>
